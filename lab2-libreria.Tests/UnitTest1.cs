@@ -39,4 +39,19 @@ public class Tests
         Assert.IsTrue(libreria.BuscarLibro("El Quijote"));
     }
 
+    [Test]
+    public void AgregarYBuscarLibro_ValidBook_ReturnTrue()
+    {
+        libreria.AgregarLibro("El Quijote");
+        Assert.IsTrue(libreria.BuscarLibro("El Quijote"));
+    }
+    
+    [Test]
+    public void AgregarYBuscarLibro_BlankOrNullBook_ThrowExceptionIllegalArgument()
+    {
+        Assert.Throws<ArgumentException>(() => libreria.AgregarLibro(null));
+        Assert.Throws<ArgumentException>(() => libreria.AgregarLibro(""));
+        Assert.Throws<ArgumentException>(() => libreria.BuscarLibro(null));
+        Assert.Throws<ArgumentException>(() => libreria.BuscarLibro(""));
+    }
 }
